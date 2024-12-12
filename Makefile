@@ -1,12 +1,11 @@
 .PHONY: push
 push:
-	@if not defined b ( \
-		echo Usage: make push b=<branch> c=<comment>; \
+	@if not defined c ( \
+		echo Usage: make push c="<comment>"; \
 		exit /b 1; \
-	) else if not defined c ( \
-		echo Usage: make push b=<branch> c=<comment>; \
-		exit /b 1; \
+	) else ( \
+		for /f "delims=" %%b in ('git rev-parse --abbrev-ref HEAD') do set current_branch=%%b && \
+		git add . && \
+		git commit -m "$(c)" && \
+		git push origin %%b \
 	)
-	git add .
-	git commit -m "$(c)"
-	git push origin $(b)
