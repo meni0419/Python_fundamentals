@@ -14,5 +14,5 @@ push:
 merge_master:
 	for /f "delims=" %%b in ('git rev-parse --abbrev-ref HEAD') do set current_branch=%%b ^ \
 		&& git checkout master ^ \
-		&& git merge --strategy=ours %%b ^ \
+		&& git merge --strategy=ours %%b -m "Merged %%b into master using 'ours' strategy" ^ \
 		&& git checkout %%b
