@@ -42,11 +42,13 @@ ifeq ($(OS), Windows_NT)
 	for /f "delims=" %%b in ('git rev-parse --abbrev-ref HEAD') do set current_branch=%%b ^ \
 		&& git checkout master ^ \
 		&& git merge %%b -m "Merged %%b into master" ^ \
+		&& git push ^ \
 		&& git checkout %%b
 else
 	current_branch=$$(git rev-parse --abbrev-ref HEAD) && \
 	git checkout master && \
 	git merge $$current_branch -m "Merged $$current_branch into master" && \
+	git push && \
 	git checkout $$current_branch
 endif
 
