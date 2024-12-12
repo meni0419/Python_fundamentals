@@ -1,7 +1,4 @@
 # function instead of sqrt()
-from win32com.client import VARIANT
-
-
 def sqrt(res):
     sqrt_res = res ** 0.5
     return sqrt_res
@@ -24,7 +21,7 @@ try:
 except ValueError:  # error handling
     print("Please, enter 2 coords x,y. Example: 2,3")
 
-# VARIANT WITHOUT NEEDS ERROR HANDLING
+# ANOTHER WAY WITHOUT NEEDS ERROR HANDLING
 # coords1 = [float(coord) for coord in input("Enter coords1: ").split(",")]
 # coords2 = [float(coord) for coord in input("Enter coords2: ").split(",")]
 # distance_coords = calc_distance(coords1[0], coords1[1], coords2[0], coords2[1])
