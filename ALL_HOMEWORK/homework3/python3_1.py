@@ -19,8 +19,8 @@ summ, diff, mult, divide, rem, pow1_in_2 = simple_calc(x1, x2)
 
 # output
 print(f"Sum: {summ}"
-      f"\nDiff: {diff}"
-      f"\nMultiply: {mult}"
-      f"\nDivide: {divide}"
-      f"\nReminder: {rem}"
-      f"\nPow a in b: {pow1_in_2}")
+      f"Diff: {diff}\n"
+      f"Multiply: {mult}\n"
+      f"Divide: {divide}\n"
+      f"Reminder: {rem}\n"
+      f"Pow a in b: {pow1_in_2}\n")

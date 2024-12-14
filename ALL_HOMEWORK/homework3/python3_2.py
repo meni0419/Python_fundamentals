@@ -10,5 +10,5 @@ radius = float(input("Enter radius: "))
 length_circle, area_circle = pi_r_circle(radius)
 
 # output calc circle
-print(f"length circle: {length_circle}"
-      f"\narea_circle: {area_circle}")
+print(f"length circle: {length_circle}\n"
+      f"area_circle: {area_circle}")

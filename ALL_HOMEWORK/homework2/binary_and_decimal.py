@@ -11,7 +11,7 @@ def binary_to_decimal(b):
 # output results binary to decimal
 binary = input("binary: ")
 decimal = binary_to_decimal(binary)
-print(f"decimal: {decimal}")
+print(f"decimal: {decimal}\n")
 
 # function for transform decimal number to binary
 def decimal_to_binary(d):
@@ -24,6 +24,6 @@ def decimal_to_binary(d):
     return b
 
 # output results decimal to binary
-decimal = int(input("\ndecimal number:"))
+decimal = int(input("decimal number:"))
 binary = decimal_to_binary(decimal)
 print(f"binary: {binary}")
