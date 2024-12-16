@@ -70,3 +70,29 @@ else
 	git branch -d $(b) || git branch -D $(b) && \
 	git push origin --delete $(b)
 endif
+
+create_repository:
+ifeq ($(OS), Windows_NT)
+	@if not defined r ( \
+		echo "Usage: make create_repository r=name_rep"; \
+		exit /b 1; \
+	) else ( \
+		git init && \
+		git add . && \
+		git commit -m "Initial commit" && \
+		gh auth login && \
+		gh repo create $(r) --public --source=. --remote=origin && \
+		git push origin HEAD \
+	)
+else
+	@if [ -z "$(r)" ]; then \
+		echo "Usage: make create_repository r=name_rep "; \
+		exit 1; \
+	fi; \
+	git init && \
+	git add . && \
+	git commit -m "Initial commit" && \
+	gh auth login && \
+	gh repo create $(r) --public --source=. --remote=origin && \
+	git push origin master
+endif
