@@ -1,4 +1,4 @@
-week = input("Type number of week:") # give the input field
+week = input("Type number of week:")  # give the input field
 
 # list of subject for week 1,2,3
 subjects = {
