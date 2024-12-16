@@ -1,12 +1,13 @@
-def first_n_number_from_fibonacci(n):
-    a, b = 0, 1
-    s = ""
-    while n > 0:
-        s += f", {a}" if s else f"{a}"
-        a, b = b, a + b
-        n -= 1
-    return s
+def round_float(number):
+    if number < 0:
+        i_number = int(number)
+        r_num = i_number - 1 if (number - i_number) <= -0.5 else i_number
+        return r_num
+    else:
+        i_number = int(number)
+        r_num = i_number + 1 if (number - i_number) >= 0.5 else i_number
+        return r_num
 
 
-N = int(input("Enter number: "))
-print(f"First {N} numbers from fibonacci sequence: {first_n_number_from_fibonacci(N)}")
+N = float(input("Enter number: "))
+print(round_float(N))

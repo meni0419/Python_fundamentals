@@ -1,62 +1,51 @@
-# sample 1
-import random
+def float_to_binary(num):
+    # Handle sign (0 for positive, 1 for negative)
+    sign = 0
+    if num < 0:
+        sign = 1
+        num = -num  # Work with the magnitude of the number
 
-members = ["Василий", "Евгений", "Олег", "София", "Инна", "Василиса", "Петр"]
-
-
-# print(random.choice(members))
-
-# pr1
-
-def sum_digits(num):
+    # Handle special cases: zero
     if num == 0:
-        return 0
-    return num % 10 + sum_digits(num // 10)
+        return "0" * 32  # 32 bits of all zeroes
 
+    # Handle the exponent and mantissa:
+    exponent = 0
+    # Normalize the number to be in the range [1, 2) and count the shifts
+    while num >= 2:
+        num /= 2
+        exponent += 1
+    while num < 1:
+        num *= 2
+        exponent -= 1
 
-def loop_without_break():
-    a = 0
-    while a == 0:
-        number = random.randint(100, 999)
-        if sum_digits(number) == 15:
-            print(f"{number} sum = {sum_digits(number)}")
-        elif number % 10 == 0:
-            print(f"{number} sum = {sum_digits(number)}, Zero")
-        elif number % 2 == 0:
-            print(f"{number} sum = {sum_digits(number)}, last digit {number % 10}")
-            a += 1
+    # Bias the exponent by 127 (per IEEE 754 standard)
+    exponent += 127
 
+    # Extract the fraction (mantissa) by removing the leading 1 (implicit)
+    mantissa = num - 1
 
-def loop_with_break():
-    while True:
-        number = random.randint(100, 999)
-        if sum_digits(number) != 15:
-            continue
-        if number % 10 == 0:
-            print(f"{number} sum = {sum_digits(number)}, Zero")
-        elif number % 2 == 0:
-            print(f"{number} sum = {sum_digits(number)}, last digit {number % 10}")
-            break
+    # Convert exponent and mantissa to binary
+    exponent_bits = ""
+    for _ in range(8):  # 8 bits for the exponent
+        exponent_bits = str(exponent % 2) + exponent_bits
+        exponent //= 2
+
+    mantissa_bits = ""
+    for _ in range(23):  # Only 23 bits for the mantissa
+        mantissa *= 2
+        if mantissa >= 1:
+            mantissa_bits += "1"
+            mantissa -= 1
         else:
-            print(f"{number} sum = {sum_digits(number)}")
+            mantissa_bits += "0"
+
+    # Combine sign, exponent, and mantissa
+    binary_representation = str(sign) + exponent_bits + mantissa_bits
+
+    return binary_representation
 
 
-# loop_without_break()
-# loop_with_break()
-
-# pr2
-# def factorial(n):
-#     if n == 0:
-#         return 1
-#     return n * factorial(n - 1)
-
-def factorial(n):
-    f = n
-    while n > 1:
-        n -= 1
-        f *= n
-    return f
-
-# number_f = int(input("Enter number: "))
-
-# print(f"Factorial {number_f} = {factorial(number_f)}")
+# Ask the user for a real number
+user_input = float(input("Enter a decimal number: "))
+print(f"Representation of a number {user_input} in IEEE 754 format: {float_to_binary(user_input)}")
