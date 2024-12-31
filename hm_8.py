@@ -1,6 +1,6 @@
 from math import pow
 
-# so much easy :)
+# So much easy :)
 #
 # def palindrome(s):
 #     return s == s[::-1]
