@@ -22,11 +22,13 @@ def is_pangram(s):
     #         return False
     # return True
 
+
 """
 2. Напишите программу, которая запрашивает у пользователя строку и выводит на экран количество гласных и согласных букв 
 в ней. Используйте функцию len() для подсчета количества букв. Выведите результат на экран с помощью команды print. 
 Решить задачу для латиницы.
 """
+
 
 def count_vowels_and_consonants(s):
     vowels = "aeiouy"
@@ -44,28 +46,13 @@ def count_vowels_and_consonants(s):
         i += 1
     return len(vowels_count), len(consonants_count)
 
-# def count_vowels(s):
-#     vowels = "aeiouy"
-#     vowels_count = 0
-#     for letter in s:
-#         if letter in vowels:
-#             vowels_count += 1
-#     return vowels_count
-#
-# def count_consonants(s):
-#     consonants = "bcdfghjklmnpqrstvwxyz"
-#     consonants_count = 0
-#     for letter in s:
-#         if letter in consonants:
-#             consonants_count += 1
-#     return consonants_count
-
 
 u_s = input("Enter string: ")
 print(f"1. Is {u_s} pangram? {is_pangram(u_s)}")
 
 vowels_len, consonants_len = count_vowels_and_consonants(u_s)
 print(f"2. Count vowels and consonants: {vowels_len} vowels, {consonants_len} consonants")
+
 # pr 1
 #
 # s = "ABC"
@@ -82,3 +69,19 @@ print(f"2. Count vowels and consonants: {vowels_len} vowels, {consonants_len} co
 #         n -= 1
 #
 # print_all_ascii_table()
+
+# def count_vowels(s):
+#     vowels = "aeiouy"
+#     vowels_count = 0
+#     for letter in s:
+#         if letter in vowels:
+#             vowels_count += 1
+#     return vowels_count
+#
+# def count_consonants(s):
+#     consonants = "bcdfghjklmnpqrstvwxyz"
+#     consonants_count = 0
+#     for letter in s:
+#         if letter in consonants:
+#             consonants_count += 1
+#     return consonants_count
