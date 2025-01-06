@@ -1,31 +1,40 @@
-def apple_per_schoolchildren(n, k):
+"""
+n школьников делят k яблок поровну, неделящийся остаток остается в корзинке. Сколько яблок
+достанется каждому школьнику? Сколько яблок останется в корзинке? Программа получает на
+вход числа n и k и должна вывести искомое количество яблок (два числа).
+"""
+
+
+def apple_per_schoolchildren():
+    n = int(input("schoolchildren: "))
+    k = int(input("apples: "))
+
     apple = k // n
     basket = k % n
-    return apple, basket
+    print(f"Apple per schoolchildren {apple} and {basket} in the basket")
 
-s = int(input("schoolchildren: "))
-a = int(input("apples: "))
-apple_per_sch, in_basket = apple_per_schoolchildren(s, a)
-print(f"Apple per schoolchildren {apple_per_sch} and {in_basket} in the basket")
 
-# def operations(n1, n2, n3, n4, fun):
-#     if fun == "sum":
-#         res = sum([n1, n2, n3, n4])
-#         return res
-#     elif fun == "multiply":
-#         res = n1 * n2 * n3 * n4
-#         return res
-#     elif fun == "sec":
-#         res = n1 * 24 * 60 * 60 + n2 * 60 * 60 + n3 * 60 + n4
-#         return res
-#
-#
-# x1 = int(input("x1: "))
-# x2 = int(input("x2: "))
-# x3 = int(input("x3: "))
-# x4 = int(input("x4: "))
-# func = input("Type name function: ")
-#
-# func_result = operations(x1, x2, x3, x4, func)
-#
-# print(f"Result {x1}, {x2}, {x3}, {x4} in {func} = {func_result}")
+#apple_per_schoolchildren()
+
+
+def operations():
+    n1 = int(input("n1: "))
+    n2 = int(input("n2: "))
+    n3 = int(input("n3: "))
+    n4 = int(input("n4: "))
+    fun = input("Type name function: ")
+
+    def print_res():
+        print(f"Result of {fun} by numbers {n1}, {n2}, {n3}, {n4} = {res}")
+
+    if fun == "sum":
+        res = sum([n1, n2, n3, n4])
+        print_res()
+    elif fun == "multiply":
+        res = n1 * n2 * n3 * n4
+        print_res()
+    elif fun == "sec":
+        res = n1 * 24 * 60 * 60 + n2 * 60 * 60 + n3 * 60 + n4
+        print_res()
+
+operations()
