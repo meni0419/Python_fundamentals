@@ -28,6 +28,6 @@ def sum_min_max(list_13):
 
 u_list_13 = input("Enter list: ")
 u_sum_13, u_min_13, u_max_13 = sum_min_max(eval(u_list_13))
-print(f"Sum: {u_sum_13}, \n"
-      f"Min: {u_min_13}, \n"
+print(f"Sum: {u_sum_13} \n"
+      f"Min: {u_min_13} \n"
       f"Max: {u_max_13}")

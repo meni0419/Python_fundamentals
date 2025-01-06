@@ -1,4 +1,7 @@
 # ex 1
+from markdown_it.common.utils import isWhiteSpace
+
+
 def bigger_from_two_number():
     a = int(input("Enter first number: "))
     b = int(input("Enter second number: "))
@@ -34,10 +37,11 @@ def set_bool(var):
         var = input("Invalid input. Please enter either True or False (e.g., 'True', 'False'): ")
     return var
 
+
 def is_weekday():
     wday = set_bool(input("Is it weekday? (True/False): "))
     if wday:
-        return "weekend"
+        return "weekday"
     else:
         return "workday"
 
@@ -49,7 +53,7 @@ def can_i_sleep():
     is_weekday = set_bool(input("Is it weekday? (True/False): "))
     is_vacation = set_bool(input("Is it vacation? (True/False): "))
 
-    if is_weekday or is_vacation:
+    if is_vacation or not is_weekday:
         return "Yes, you can sleep."
     else:
         return "No, you can't sleep."
@@ -128,5 +132,4 @@ def problem_with_parrot():
     else:
         return False
 
-
-print(problem_with_parrot())
+# print(problem_with_parrot())
