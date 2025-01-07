@@ -23,6 +23,7 @@ def operations():
     n3 = int(input("n3: "))
     n4 = int(input("n4: "))
     fun = input("Type name function: ")
+    SEC_IN_MIN = 60
 
     def print_res():
         print(f"Result of {fun} by numbers {n1}, {n2}, {n3}, {n4} = {res}")
@@ -34,7 +35,7 @@ def operations():
         res = n1 * n2 * n3 * n4
         print_res()
     elif fun == "sec":
-        res = n1 * 24 * 60 * 60 + n2 * 60 * 60 + n3 * 60 + n4
+        res = n1 * 24 * SEC_IN_MIN * 2 + n2 * SEC_IN_MIN * 2  + n3 * SEC_IN_MIN + n4
         print_res()
 
 operations()
