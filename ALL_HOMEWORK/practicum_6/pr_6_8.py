@@ -21,7 +21,7 @@ def print_pin(n):
         print(f"{p4 * n}".center(width_field))
         print(f"{p5 * n}".center(width_field))
     else:
-        print(f"Enter number from 1 to 9")
+        print(f"Please, enter number from 1 to 9")
 
 
 print_pin(int(input("Enter number: ")))
