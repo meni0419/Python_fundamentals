@@ -1,16 +1,18 @@
-# ex 1
-from markdown_it.common.utils import isWhiteSpace
-
-
 def bigger_from_two_number():
+    """
+    1. Даны два целых числа a и b. Напишите программу, которая находит большее из двух чисел и печатает сообщение,
+    какое число больше (по условию числа неравны).
+    :return:
+    """
     a = int(input("Enter first number: "))
     b = int(input("Enter second number: "))
 
     if a > b:
-        return a
+        print(f" a > b")
     else:
-        return b
+        print(f" b > a")
 
+bigger_from_two_number()
 
 # ex 2
 def bigger_from_three_number():
