@@ -1,3 +1,6 @@
+from ALL_HOMEWORK.homework_6.practice import hour_check
+
+
 def bigger_from_two_number():
     """
     1. Даны два целых числа a и b. Напишите программу, которая находит большее из двух чисел и печатает сообщение,
@@ -12,7 +15,8 @@ def bigger_from_two_number():
     else:
         print(f" b > a")
 
-bigger_from_two_number()
+
+# bigger_from_two_number()
 
 # ex 2
 def bigger_from_three_number():
@@ -123,15 +127,27 @@ def num_or_sum_eq10():
 
 # print(num_or_sum_eq10())
 
-# ex 10
+# У нас есть громкий попугай. У нас проблемы, если попугай говорит громко до 7 утра и
+# после 20.00. Напишите программу, которая печатает True если у нас проблемы и
+# False - иначе. Подсказка: используйте две переменные: isTalking - логическая
+# переменная и hour - целое число в диапазоне 0..23. Подумайте, как должна вести
+# себя программа, если значение hour - за пределами 0..23. Запрограммируйте это
+# поведение.
+
 def problem_with_parrot():
     is_talking = set_bool(input("Is the parrot talking? (True/False): "))
     hour = int(input("Enter hour: "))
-    if hour > 23 or hour < 0:
-        hour = int(input("Please, enter hour between 0 and 23:"))
-    if is_talking and (hour < 7 or hour > 20):
-        return True
-    else:
-        return False
+    hour_check(hour)
+    print(is_talking and (hour < 7 or hour > 20))
 
-# print(problem_with_parrot())
+
+problem_with_parrot()
+
+
+def problem_with_parrot2():
+    is_talking = set_bool(input("Is the parrot talking? (True/False): "))
+    hour = int(input("Enter hour: "))
+    hour = hour % 24
+    print(is_talking and (hour > 7 or hour < 20))
+
+# problem_with_parrot2()
