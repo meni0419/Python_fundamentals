@@ -1,21 +1,44 @@
 # ANSI escape codes for text colors
+from unittest.util import sorted_list_difference
+
 RED = "\033[31m"
 GREEN = "\033[32m"
 BLUE = "\033[34m"
 RESET = "\033[0m"  # Resets the text color to default
 
 print(
-    f"""{BLUE}\n2. Напишите программу, которая принимает строку от пользователя и разбивает ее на отдельные слова. 
-Затем программа должна создать новый кортеж, содержащий длину каждого слова в исходной строке. 
-Используйте методы строк и кортежей для обработки данных.
+    f"""{BLUE}1. Напишите программу, которая принимает матрицу (вложенный список) от пользователя и находит сумму 
+    всех элементов в матрице. Используйте вложенные списки и циклы для обхода элементов матрицы.
 
-Пример вывода:
-{BLUE}Введите предложение: {GREEN}Программирование это интересно и полезно
-{BLUE}Длины слов в предложении: {GREEN}(15, 3, 8, 2, 6) {RED}err: there is wrong count{RESET}""")
+    Пример матрицы: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    Пример вывода: Сумма элементов в матрице: 45{RESET}\n""")
 
 
-def word_lengths2():
-    string = input("Введите предложение: ")
-    words_length = tuple([len(word) for word in string.split()])
-    print(f"Длины слов в предложении:{GREEN}{words_length}{RESET}")
+def sum_of_elements(matrix):
+    sum_matrix = 0
+    for row in matrix:
+        for element in row:
+            sum_matrix += element
+    return sum_matrix
 
+
+input_matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+print(f"Сумма элементов в матрице: {GREEN}{sum_of_elements(input_matrix)}{RESET}")
+
+print(
+    f"""{BLUE}\n2. Напишите программу, которая принимает список чисел от пользователя и сортирует его в порядке убывания, 
+    используя метод sort() и параметр reverse=True. Выведите отсортированный список на экран.
+
+    Пример вывода:
+    Введите список чисел, разделенных пробелами: 5 2 8 1 3
+    Отсортированный список чисел: [8, 5, 3, 2, 1]{RESET}\n""")
+
+
+def sort_list():
+    numbers = input("Введите список чисел, разделенных пробелами: ")
+    s_num = list(map(int, numbers.split()))
+    s_num.sort(reverse=True)
+    return s_num
+
+print(f"Отсортированный список чисел: {GREEN}{sort_list()}{RESET}")
