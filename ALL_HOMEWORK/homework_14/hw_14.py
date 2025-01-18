@@ -33,12 +33,14 @@ def add_numbers_to_list():
     number_list = []
     count = 0
     while True:
-
-        number = input("Введите число (или 'Выход' для завершения): ")
-        if number == 'Выход' or count==10:
-            break
-        number_list.append(int(number))
-        count += 1
+        try:
+            number = input("Введите число (или 'Выход' для завершения): ")
+            if number == 'Выход' or count == 10:
+                break
+            number_list.append(int(number))
+            count += 1
+        except ValueError:
+            print(f"{RED}ОШИБКА: Введите ЦЕЛОЕ число (или 'Выход' для завершения)!{RESET}")
     return number_list
 
 print(f"result: {GREEN}{add_numbers_to_list()}{RESET}")
