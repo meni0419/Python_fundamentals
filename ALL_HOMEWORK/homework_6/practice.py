@@ -1,4 +1,5 @@
 import random
+import timeit
 
 
 def hour_check(hour=0):
@@ -24,23 +25,21 @@ def loop_without_break():
        Для четных выводить дополнительно последнюю цифру.
        Для оканчивающихся на ноль печатать строку zero.
        Попробовать решить сначала без break/continue, потом избегая вложенных условий"""
-    a = False
-    b = 0
-    c = 0
-    while not a:
+    do_it = True
+    while do_it:
         number = random.randint(100, 999)
         if sum_digits(number) == 15:
-            print(f"{number} sum = {sum_digits(number)}")
-            b = 1
-        elif number % 10 == 0:
-            print(f"{number} sum = {sum_digits(number)}, Zero")
-            c = 1
-        elif number % 2 == 0:
-            print(f"{number} sum = {sum_digits(number)}, last digit {number % 10}")
-            a += b == 1 and c == 1
+            print(f"{number} sum = {sum_digits(number)}", end=", ")
+            if number % 10 == 0:
+                print(f"Zero")
+            elif number % 2 == 0:
+                print(f"last digit {number % 10}")
+            do_it = False
 
 
-# loop_without_break()
+#print(timeit.timeit("loop_without_break", globals=globals(), number=1))
+
+
 # print(f"\n====second solution====\n")
 
 
@@ -49,33 +48,52 @@ def loop_with_break():
         number = random.randint(100, 999)
         if sum_digits(number) != 15:
             continue
+        print(f"{number} sum = {sum_digits(number)}", end=", ")
         if number % 10 == 0:
-            print(f"{number} sum = {sum_digits(number)}, Zero")
+            print(f"Zero")
         elif number % 2 == 0:
-            print(f"{number} sum = {sum_digits(number)}, last digit {number % 10}")
-            break
-        else:
-            print(f"{number} sum = {sum_digits(number)}")
+            print(f"last digit {number % 10}")
+        break
 
 
-#loop_with_break()
+#print(timeit.timeit("loop_with_break()", globals=globals(), number=1))
 
 
-#not working...
-def loop_with_break():
+def loop_with_break2():
     """1. Для трехзначных чисел оставить только те, сумма цифр в которых равна 15.
        Для четных выводить дополнительно последнюю цифру.
        Для оканчивающихся на ноль печатать строку zero.
        Попробовать решить сначала без break/continue, потом избегая вложенных условий"""
     while True:
         number = random.randint(100, 999)
-        if sum_digits(number) != 15 and number % 10 != 0 and number % 2 != 0:
+        if sum_digits(number) != 15 or number % 10 != 0 or number % 2 != 0:
             continue
         print(f"{number} sum = {sum_digits(number)}, last digit {number % 10}, Zero")
         break
 
 
-loop_with_break()
+#print(timeit.timeit("loop_with_break2()", globals=globals(), number=1))
+
+
+def loop_with_break3(number=0):
+    """1. Для трехзначных чисел оставить только те, сумма цифр в которых равна 15.
+       Для четных выводить дополнительно последнюю цифру.
+       Для оканчивающихся на ноль печатать строку zero.
+       Попробовать решить сначала без break/continue, потом избегая вложенных условий"""
+    while True:
+        if sum_digits(number) != 15:
+            continue
+        else:
+            print(f"{number} sum = {sum_digits(number)}", end=", ")
+        if number % 10 == 0:
+            print(f"Zero")
+        elif number % 2 == 0:
+            print(f"last digit {number % 10}")
+        break
+
+
+#number = int(input("Enter number: "))
+#print(timeit.timeit("loop_with_break3(number)", globals=globals(), number=1))
 
 
 def factorial_es(n):
@@ -91,17 +109,19 @@ def factorial(n):
        Используйте цикл с предусловием while для решения задачи.
        Выведите результат на экран с помощью команды print."""
     f = n
+    if n == 0:
+        return 1
     while n > 1:
         n -= 1
         f *= n
     return f
 
 
-# number_f = int(input("Enter number: "))
-#
-# print(f"Factorial {number_f} = {factorial(number_f)}")
-# print(f"\n====second solution====\n")
-# print(f"Factorial {number_f} = {factorial_es(number_f)}")
+number_f = int(input("Enter number: "))
+
+print(f"Factorial {number_f} = {timeit.timeit("factorial(number_f)", globals=globals(), number=5)}")
+print(f"\n====second solution====\n")
+print(f"Factorial {number_f} = {timeit.timeit("factorial_es(number_f)", globals=globals(), number=5)}")
 
 def guess_number(x):
     x = int(input("Enter number: "))
@@ -121,7 +141,8 @@ def print_num_reverse():
     num_ = input("Enter number: ")
     print(num_[::-1])
 
-#print_num_reverse()
+
+# print_num_reverse()
 
 def print_num_reverse2(n):
     while n:
@@ -130,4 +151,4 @@ def print_num_reverse2(n):
     else:
         print("Done")
 
-#print_num_reverse2(5)
+# print_num_reverse2(5)
