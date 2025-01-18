@@ -52,12 +52,8 @@ print(
 
 def word_lengths():
     string = input("Введите предложение: ")
-    words_cortege = tuple(string.split())
-    words_length = []
-    for word in words_cortege:
-        words_length.append(len(word))
-    words_length = tuple(words_length)
-    print(f"Длины слов в предложении:{GREEN}{words_length}{RESET}")
+    words_length = tuple([len(word) for word in string.split()])
+    print(f"Длины слов в предложении: {GREEN}{words_length}{RESET}")
 
 
 word_lengths()
