@@ -37,7 +37,7 @@ def loop_without_break():
             do_it = False
 
 
-#print(timeit.timeit("loop_without_break", globals=globals(), number=1))
+print(timeit.timeit("loop_without_break", globals=globals(), number=1))
 
 
 # print(f"\n====second solution====\n")
@@ -56,7 +56,7 @@ def loop_with_break():
         break
 
 
-#print(timeit.timeit("loop_with_break()", globals=globals(), number=1))
+print(timeit.timeit("loop_with_break()", globals=globals(), number=1))
 
 
 def loop_with_break2():
@@ -72,28 +72,31 @@ def loop_with_break2():
         break
 
 
-#print(timeit.timeit("loop_with_break2()", globals=globals(), number=1))
+print(timeit.timeit("loop_with_break2()", globals=globals(), number=1))
 
 
-def loop_with_break3(number=0):
+def loop_with_break3():
     """1. Для трехзначных чисел оставить только те, сумма цифр в которых равна 15.
        Для четных выводить дополнительно последнюю цифру.
        Для оканчивающихся на ноль печатать строку zero.
        Попробовать решить сначала без break/continue, потом избегая вложенных условий"""
+    #count = 0
     while True:
-        if sum_digits(number) != 15:
+        num = 906 #int(input("Enter number: "))
+        if sum_digits(num) != 15: #or count==10:
+            #count +=1
             continue
         else:
-            print(f"{number} sum = {sum_digits(number)}", end=", ")
-        if number % 10 == 0:
+            print(f"{num} sum = {sum_digits(num)}", end=", ")
+        if num % 10 == 0:
             print(f"Zero")
-        elif number % 2 == 0:
-            print(f"last digit {number % 10}")
+        elif num % 2 == 0:
+            print(f"last digit {num % 10}")
         break
 
 
 #number = int(input("Enter number: "))
-#print(timeit.timeit("loop_with_break3(number)", globals=globals(), number=1))
+print(timeit.timeit("loop_with_break3()", globals=globals(), number=1))
 
 
 def factorial_es(n):
@@ -117,11 +120,11 @@ def factorial(n):
     return f
 
 
-number_f = int(input("Enter number: "))
-
-print(f"Factorial {number_f} = {timeit.timeit("factorial(number_f)", globals=globals(), number=5)}")
-print(f"\n====second solution====\n")
-print(f"Factorial {number_f} = {timeit.timeit("factorial_es(number_f)", globals=globals(), number=5)}")
+# number_f = int(input("Enter number: "))
+#
+# print(f"Factorial {number_f} = {timeit.timeit("factorial(number_f)", globals=globals(), number=5)}")
+# print(f"\n====second solution====\n")
+# print(f"Factorial {number_f} = {timeit.timeit("factorial_es(number_f)", globals=globals(), number=5)}")
 
 def guess_number(x):
     x = int(input("Enter number: "))
