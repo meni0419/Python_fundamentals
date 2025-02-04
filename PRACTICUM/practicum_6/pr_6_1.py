@@ -1,4 +1,4 @@
-from ALL_HOMEWORK.practicum_2.exercises import set_bool
+from PRACTICUM.practicum_2.exercises import set_bool
 
 """
 Перепишите решение следующей задачи с использованием функции. У нас есть две

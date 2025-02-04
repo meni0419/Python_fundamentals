@@ -25,8 +25,8 @@ print.
 
 
 def create_pairs():
-    list1 = input("Enter first list: ")
-    list2 = input("Enter second list: ")
+    list1 = "1 2 3 4 5"
+    list2 = "A B C D E"
 
     print(list(zip(list1.split(" "), list2.split(" "))))
 
