@@ -23,7 +23,9 @@ def palindrome_hard(n):
 
 
 num = int(input("Enter number: "))
-print(f"Is {num} palindrome? {palindrome_hard(num)}")
+print(f"v1. Is {num} palindrome? {palindrome_hard(num)}")
+num_str = str(num)
+print(f"v2. Is {num} palindrome? {True if num_str == num_str[::-1] else False}")
 
 """
 2. Напишите программу, которая запрашивает у пользователя целое число и проверяет, является ли оно числом Армстронга. 

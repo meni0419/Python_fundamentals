@@ -49,7 +49,7 @@ text = """    \thello,,,, world.    how are you???
 Do you know what means "и т.д. и т.п."?
    \t   I'm fine. Thank you   for your question!           """
 
-UNIQ_MARK = " ,.:;!?!№;%:?"
+UNIQ_MARK = " ,.!?!№;%:?"
 
 print(clean_text(text))
 
