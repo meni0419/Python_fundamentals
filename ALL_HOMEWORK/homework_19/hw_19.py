@@ -61,12 +61,17 @@ print("Анаграммы (v2):", ', '.join(str(group) for group in anagrams_v2(
 Пример вывода:
 True"""
 
+
 def is_subset(set1, set2):
     for item in set1:
         if item in set2:
             return True
         else:
             return False
+
+
 set_1 = {1, 2, 3}
 set_2 = {1, 2, 3, 4, 5}
-print(f"Является ли {set_1} подмножеством {set_2}? {is_subset(set_1, set_2)}")
+print(f"Является ли {set_1} подмножеством {set_2}? (v1) {is_subset(set_1, set_2)}")
+print(f"Является ли {set_1} подмножеством {set_2}? (v2) {set_1 <= set_2}")
+print(f"Является ли {set_1} подмножеством {set_2}? (v3) {set_1.issubset(set_2)}")
