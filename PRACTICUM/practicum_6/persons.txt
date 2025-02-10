@@ -1,5 +1,5 @@
-Meln;Max;35
-Korn;Illya;53
-Layn;Makar;33
-Pony;Nata;25
-Hyve;Lisa;27
+Ivanov;Ivan;25
+Petrov;Petr;30
+Sidorov;Sidr;35
+Smirnov;Sergey;28
+Nikolaev;Nikolay;40

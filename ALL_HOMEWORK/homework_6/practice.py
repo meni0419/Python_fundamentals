@@ -37,7 +37,7 @@ def loop_without_break():
             do_it = False
 
 
-print(timeit.timeit("loop_without_break", globals=globals(), number=1))
+#print(timeit.timeit("loop_without_break", globals=globals(), number=1))
 
 
 # print(f"\n====second solution====\n")
@@ -56,7 +56,7 @@ def loop_with_break():
         break
 
 
-print(timeit.timeit("loop_with_break()", globals=globals(), number=1))
+#print(timeit.timeit("loop_with_break()", globals=globals(), number=1))
 
 
 def loop_with_break2():
@@ -72,7 +72,7 @@ def loop_with_break2():
         break
 
 
-print(timeit.timeit("loop_with_break2()", globals=globals(), number=1))
+# print(timeit.timeit("loop_with_break2()", globals=globals(), number=1))
 
 
 def loop_with_break3():
@@ -96,7 +96,7 @@ def loop_with_break3():
 
 
 #number = int(input("Enter number: "))
-print(timeit.timeit("loop_with_break3()", globals=globals(), number=1))
+# print(timeit.timeit("loop_with_break3()", globals=globals(), number=1))
 
 
 def factorial_es(n):

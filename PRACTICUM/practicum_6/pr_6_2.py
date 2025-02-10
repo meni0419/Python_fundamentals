@@ -11,4 +11,6 @@ def diff_21(x):
     else:
         print(abs(21 - x))
 
-diff_21(int(input("Enter number: ")))
+x=20
+diff_21(x)
+#diff_21(int(input("Enter number: ")))

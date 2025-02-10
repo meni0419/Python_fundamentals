@@ -18,9 +18,14 @@ def can_sleep(is_week_day, is_vacation):
         print("Yes u can sleep")
 
 
-can_sleep(
-    is_wd := set_bool(
-        input("Is weekday? (True/False): ")),
-    is_vacation := set_bool(
-        input("Is vacation? (True/False): "))
-)
+is_wd = True
+is_vacation = False
+
+can_sleep(is_wd, is_vacation)
+
+# can_sleep(
+#     is_wd := set_bool(
+#         input("Is weekday? (True/False): ")),
+#     is_vacation := set_bool(
+#         input("Is vacation? (True/False): "))
+# )

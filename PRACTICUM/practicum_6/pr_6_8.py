@@ -14,7 +14,7 @@ def print_pin(n):
     p4 = "/(  _  )\\ "
     p5 = "  ^^ ^^   "
     if 1 <= n <= 9:
-        width_field = 90
+        width_field = 100
         print(f"{p1 * n}".center(width_field))
         print(f"{p2 * n}".center(width_field))
         print(f"{p3 * n}".center(width_field))
@@ -23,5 +23,5 @@ def print_pin(n):
     else:
         print(f"Please, enter number from 1 to 9")
 
-
-print_pin(int(input("Enter number: ")))
+print_pin(5)
+#print_pin(int(input("Enter number: ")))

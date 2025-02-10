@@ -14,4 +14,8 @@ def multiply_rows(text, n):
         print(text)
 
 
-multiply_rows(text=input("Enter text: "), n=int(input("Enter number: ")))
+text = "Дано предложение"
+n = 3
+
+multiply_rows(text, n)
+#multiply_rows(text=input("Enter text: "), n=int(input("Enter number: ")))

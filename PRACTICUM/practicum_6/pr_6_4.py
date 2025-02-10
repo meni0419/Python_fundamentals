@@ -14,5 +14,6 @@ def factorial(n):
         result *= i
     return result
 
-
-print(factorial(int(input("Enter number: "))))
+n = 7
+print(factorial(n))
+#print(factorial(int(input("Enter number: "))))

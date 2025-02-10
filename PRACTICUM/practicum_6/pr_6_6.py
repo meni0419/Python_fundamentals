@@ -6,16 +6,38 @@
 """
 
 
-def read_print_file(filename):
+def read_print_file():
+    def write_file():
+        filename = "persons.txt"
+        with open(filename, "w") as file:
+            persons_list = """
+                Ivanov;Ivan;25
+                Petrov;Petr;30
+                Sidorov;Sidr;35
+                Smirnov;Sergey;28
+                Nikolaev;Nikolay;40
+            """
+            persons_list = persons_list.strip().replace(" ", "")
+            file.write(persons_list)
+            file.close()
+
+            # for i in range(5):
+            #     file.write(input("Enter surname: ") + ";" + input("Enter name: ") + ";" + input("Enter age: ") + "\n")
+            # file.close()
+        print("File created")
+        return filename
+
+    print("File read")
     list_of_persons = ""
-    with open(filename, "r") as file:
+    with open(write_file(), "r") as file:
         for i in file:
             surname, name, age = i.split(";")
             list_of_persons += "First name: " + name + ", Last name: " + surname + ", Age: " + age
         file.close()
-    print(list_of_persons)
+    return list_of_persons
 
 
-read_print_file("persons.txt")
+print(read_print_file())
+# print(read_print_file("persons.txt"))
 
 # if using print() inside `for` then added unnecessary extra line

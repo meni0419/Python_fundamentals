@@ -141,7 +141,7 @@ def problem_with_parrot():
     print(is_talking and (hour < 7 or hour > 20))
 
 
-problem_with_parrot()
+#problem_with_parrot()
 
 
 def problem_with_parrot2():
