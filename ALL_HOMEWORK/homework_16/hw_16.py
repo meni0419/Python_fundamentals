@@ -15,11 +15,11 @@ print(
 
 
 def sum_of_elements(matrix):
-    sum_matrix = 0
-    for row in matrix:
-        for element in row:
-            sum_matrix += element
-    return sum_matrix
+    # sum_matrix = 0
+    # for row in matrix:
+    #     for element in row:
+    #         sum_matrix += element
+    return sum(element for row in matrix for element in row)
 
 
 input_matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -36,9 +36,9 @@ print(
 
 
 def sort_list():
-    numbers = input("Введите список чисел, разделенных пробелами: ")
     s_num = list(map(int, numbers.split()))
     s_num.sort(reverse=True)
     return s_num
 
+numbers = "5 2 8 1 3"
 print(f"Отсортированный список чисел: {GREEN}{sort_list()}{RESET}")
