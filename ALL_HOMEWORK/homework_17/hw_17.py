@@ -15,14 +15,14 @@ print(
     Измененный список чисел: [2, 1, 6, 2, 10]\n{RESET}""")
 
 
-def modify_list():
-    numbers = input("Введите список чисел, разделенных пробелами: ")
+def modify_list(numbers):
     numbers = list(map(int, numbers.split()))
     numbers = list(map(lambda number: number // 2 if number % 2 == 0 else number * 2, numbers))
     return numbers
 
 
-print(f"Измененный список чисел: {modify_list()}")
+numbers = "1 2 3 4 5"
+print(f"Измененный список чисел: {GREEN}{modify_list(numbers)}{RESET}\n")
 
 print(
     f"""{BLUE}2. Напишите программу, которая принимает произвольное количество аргументов от пользователя 
@@ -32,11 +32,3 @@ print(
     Пример вывода:
     Введите числа, разделенные пробелами: 1 2 3 4 5
     Сумма чисел: 15\n{RESET}""")
-
-
-def calculate_sum(*args):
-    return sum(args)
-
-
-input_args = input("Введите числа, разделенные пробелами: ")
-print(f"Сумма чисел: {GREEN}{calculate_sum(*list(map(int, input_args.split())))}")
