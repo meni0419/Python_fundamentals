@@ -21,20 +21,22 @@
 """
 
 
-def can_sell_icecream_v2(lst: list[int]) -> bool:
+def can_sell_icecream(lst: list[int]) -> bool:
     cash = []
     customers = lst.copy()
+    print(lst)
     for banknote in lst:
-        if banknote in customers:
-            if banknote == 5 and 5 in customers:
-                cash.append(5)
-                customers.remove(5)
-            if banknote == 10 and 5 in customers + cash:
+        if banknote == 5 and 5 in customers:
+            cash.append(5)
+            customers.remove(5)
+        if banknote == 10:
+            if 5 in customers + cash:
                 (customers if 5 in customers else cash).remove(5)
                 cash.append(10)
-            elif banknote == 10 and 5 not in customers + cash:
+            else:
                 return False
-            elif banknote == 20 and 5 in customers + cash:
+        elif banknote == 20:
+            if 5 in customers + cash:
                 if 10 in customers + cash:
                     (customers if 10 in customers else cash).remove(10)
                     (customers if 5 in customers else cash).remove(5)
@@ -45,7 +47,10 @@ def can_sell_icecream_v2(lst: list[int]) -> bool:
                         (customers if 5 in customers else cash).remove(5)
                 else:
                     return False
-            elif banknote == 50 and 5 in customers + cash:
+            else:
+                return False
+        elif banknote == 50:
+            if 5 in customers + cash:
                 if (customers + cash).count(20) >= 2:
                     cash.append(50)
                     for _ in range(2):
@@ -96,42 +101,62 @@ def can_sell_icecream_v2(lst: list[int]) -> bool:
                         (customers if 5 in customers else cash).remove(5)
                 else:
                     return False
-    return True
-
-
-def can_sell_icecream(queue: list[int]) -> bool:
-    cash = []
-
-    def take_change(amount: int) -> bool:
-        """Обрабатывает сдачу, используя cash и customers."""
-        nonlocal cash
-        for banknote in [20, 10, 5]:  # Проверяем сдачу от крупных к мелким
-            while amount >= banknote and banknote in cash + customers:
-                target = customers if banknote in customers else cash
-                target.remove(banknote)
-                amount -= banknote
-        return amount == 0  # Вернём True, если удалось полностью покрыть сдачу
-
-    customers = queue.copy()
-    for banknote in queue:
-        if banknote == 5:
-            cash.append(5)
-            customers.remove(5)
-        elif banknote in [10, 20, 50]:
-            # Рассчитаем сдачу: для 10 нужно вернуть 5, для 20 — 15, для 50 — 45
-            if not take_change(banknote - 5):
+            else:
                 return False
-            cash.append(banknote)
-            customers.remove(banknote)
     return True
 
 
-print(can_sell_icecream([50, 20, 10, 5, 5, 5]))  # True
-print(can_sell_icecream([50, 10, 10, 10, 10, 5]))  # True
-print(can_sell_icecream([20, 5, 5, 5, 5]))  # True
-print(can_sell_icecream([5, 10, 10]))  # False
-print(can_sell_icecream([5, 5, 10, 10]))  # True
-print(can_sell_icecream([5, 10, 5, 20]))  # True
-print(can_sell_icecream([5, 5, 5, 20]))  # True
-print(can_sell_icecream([50, 10, 5, 20, 10, 10, 5, 5, 5]))  # False
-print(can_sell_icecream([50, 10, 5, 20, 10, 10, 5, 5, 5, 5]))  # True
+def can_sell_icecream2(queue: list[int]) -> bool:
+    cash = {5: 0, 10: 0, 20: 0, 50:0}  # Считаем количество банкнот в кассе
+    for banknote in queue:
+        cash[banknote] += 1
+    print(queue)
+    print(cash)
+    for banknote in queue:
+        if banknote == 10:
+            if cash[5] <= 0:
+                return False
+            cash[5] -= 1
+        elif banknote == 20:
+            if cash[10] > 0 and cash[5] > 0:
+                cash[10] -= 1
+                cash[5] -= 1
+            elif cash[5] >= 3:
+                cash[5] -= 3
+            else:
+                return False
+        elif banknote == 50:
+            if cash[20] >= 2 and cash[5] > 0:
+                cash[20] -= 2
+                cash[5] -= 1
+            elif cash[20] > 0 and cash[10] >= 2 and cash[5] > 0:
+                cash[20] -= 1
+                cash[10] -= 2
+                cash[5] -= 1
+            elif cash[10] >= 4 and cash[5] >= 0:
+                cash[10] -= 4
+                cash[5] -= 1
+            elif cash[10] >= 3 and cash[5] >= 3:
+                cash[10] -= 3
+                cash[5] -= 3
+            elif cash[10] >= 2 and cash[5] >= 5:
+                cash[10] -= 2
+                cash[5] -= 5
+            elif cash[10] >=1 and cash[5] >= 7:
+                cash[10] -= 1
+                cash[5] -= 7
+            elif cash[5] >= 9:
+                cash[5] -= 9
+            else:
+                return False
+    return True
+
+print('False = ', can_sell_icecream([50, 20, 10, 5, 5, 5]), '\n')  # False
+print('False = ', can_sell_icecream([50, 10, 10, 10, 10, 5]), '\n')  # False
+print('True = ', can_sell_icecream([20, 5, 5, 5, 5]), '\n')  # True
+print('False = ', can_sell_icecream([5, 10, 10]), '\n')  # False
+print('True = ', can_sell_icecream([5, 5, 10, 10]), '\n')  # True
+print('True = ', can_sell_icecream([5, 10, 5, 20]), '\n')  # True
+print('True = ', can_sell_icecream([5, 5, 5, 20]), '\n')  # True
+print('False = ', can_sell_icecream([50, 10, 5, 20, 10, 10, 5, 5, 5]), '\n')  # False
+print('True = ', can_sell_icecream([50, 10, 5, 20, 10, 10, 5, 5, 5, 5]))  # True
