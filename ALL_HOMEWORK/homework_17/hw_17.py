@@ -16,6 +16,7 @@ print(
 
 
 def modify_list(numbers):
+#    numbers = input('Введите список чисел, разделенных пробелами:')
     numbers = list(map(int, numbers.split()))
     numbers = list(map(lambda number: number // 2 if number % 2 == 0 else number * 2, numbers))
     return numbers
