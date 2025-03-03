@@ -14,7 +14,7 @@ def anagrams(words):
     anagrams_str = []
     for word in words:
         anagrams_list = [word]
-        for word2 in words:
+        for word2 in words[:]:
             if sorted(word) == sorted(word2) and word != word2:
                 anagrams_list.append(word2)
                 words.remove(word2)
