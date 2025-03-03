@@ -10,7 +10,37 @@
 Анаграммы: ['dog', 'god'], ['cat', 'tac', 'act']"""
 
 
-def anagrams_v1(words):
+def anagrams(words):
+    anagrams_str = []
+    for word in words:
+        anagrams_list = [word]
+        for word2 in words:
+            if set(word) == set(word2) and word != word2:
+                anagrams_list.append(word2)
+                words.remove(word2)
+        anagrams_str.append(anagrams_list)
+    return anagrams_str
+
+
+words = ['cat', 'dog', 'tac', 'god', 'act']
+print("Анаграммы:", ', '.join(str(group) for group in anagrams(words)))  # Анаграммы: ['dog', 'god'], ['cat', 'tac', 'act']"""
+
+"""попытки решить по другому"""
+
+
+# снова словарь)
+def anagrams_base(words):
+    anagram_dict = {}
+    for word in words:
+        sorted_word = ''.join(sorted(word))
+        anagram_dict.setdefault(sorted_word, []).append(word)
+
+    # Возвращаем значения словаря (только те, где больше одного слова)
+    return [group for group in anagram_dict.values()]
+
+
+# вариант сравнивать по сету
+def anagrams_v1_0(words):
     words_copy = words.copy()
     anagrams_str = []
     for word in words:
@@ -23,11 +53,33 @@ def anagrams_v1(words):
     return anagrams_str
 
 
-words = ['cat', 'dog', 'tac', 'god', 'act']
-print(f"Анаграммы (v1): {', '.join(str(group) for group in anagrams_v1(words) if len(group) > 1)}")
+# словарь и через сортировку
+def anagrams_v1_1(words):
+    # Создаем копию исходного списка для работы
+    words_copy = words.copy()
+    anagrams_str = []
+
+    while words_copy:  # Пока есть слова в words_copy
+        word = words_copy.pop(0)  # Извлекаем первое слово
+        anagram_list = [word]  # Оно точно является анаграммой самому себе
+        # Проходим по оставшимся словам, чтобы найти анаграммы
+        words_to_remove = []
+        for word2 in words_copy:
+            # Слова являются анаграммами, если отсортированные символы совпадают
+            if sorted(word) == sorted(word2):
+                anagram_list.append(word2)
+                words_to_remove.append(word2)
+        # Удаляем найденные анаграммы из words_copy
+        for word2 in words_to_remove:
+            words_copy.remove(word2)
+        # Добавляем список анаграмм в итоговый список
+        anagrams_str.append(anagram_list)
+
+    return anagrams_str
 
 
-def anagrams_v2(words):
+# словарь и немного другое использование сортировки
+def anagrams_v2_0(words):
     # Создаем словарь для группировки анаграмм
     anagram_dict = {}
 
@@ -48,30 +100,8 @@ def anagrams_v2(words):
 
 
 words = ['cat', 'dog', 'tac', 'god', 'act']
-print("Анаграммы (v2):", ', '.join(str(group) for group in anagrams_v2(words)))
-
-"""
-Напишите функцию is_subset, которая принимает два множества set1 и set2 и проверяет, является ли set1 подмножеством set2. 
-Функция должна возвращать True, если все элементы из set1 содержатся в set2, и False в противном случае. 
-Функция должна быть реализована без использования встроенных методов issubset или <=.
-
-Пример множеств
-{1, 2, 3}
-{1, 2, 3, 4, 5}
-Пример вывода:
-True"""
-
-
-def is_subset(set1, set2):
-    for item in set1:
-        if item in set2:
-            return True
-        else:
-            return False
-
-
-set_1 = {1, 2, 3}
-set_2 = {1, 2, 3, 4, 5}
-print(f"Является ли {set_1} подмножеством {set_2}? (v1) {is_subset(set_1, set_2)}")
-print(f"Является ли {set_1} подмножеством {set_2}? (v2) {set_1 <= set_2}")
-print(f"Является ли {set_1} подмножеством {set_2}? (v3) {set_1.issubset(set_2)}")
+print("===попытки решить по другому===")
+print("Анаграммы (base):", ', '.join(str(group) for group in anagrams_base(words)))
+print("Анаграммы (v2_0):", ', '.join(str(group) for group in anagrams_v2_0(words)))
+print("Анаграммы (v1_1):", ', '.join(str(group) for group in anagrams_v1_1(words) if len(group) > 1))
+print("Анаграммы (v1_0):", ', '.join(str(group) for group in anagrams_v1_0(words) if len(group) > 1))
