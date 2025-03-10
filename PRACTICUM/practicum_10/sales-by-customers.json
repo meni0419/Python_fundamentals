@@ -1,0 +1,11 @@
+{
+  "Alice": {
+    "banana": "2"
+  },
+  "Bob": {
+    "banana": "7"
+  },
+  "Charlie": {
+    "apple": "1"
+  }
+}
