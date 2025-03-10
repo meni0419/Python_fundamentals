@@ -14,16 +14,17 @@
 
 def get_synonym(synonyms: dict, word: str) -> str:
     for key, value in synonyms.items():
-        if word.lower() in key.lower():
+        if word in key:
             return value
-        elif word.lower() in value.lower():
+        elif word in value:
             return key
         else:
             continue
     return f"Word <{word}> was not found in the dictionary!"
 
-words = {"Hello": "Hi", "Bye": "Goodbye", "List": "Array"}
 
-print(get_synonym(words, "Goodbye"))  # Bye
-print(get_synonym(words, "List"))  # Array
-print(get_synonym(words, "Plate"))  # Word <Plate> was not found in the dictionary!
+if __name__ == "__main__":
+    words = {"Hello": "Hi", "Bye": "Goodbye", "List": "Array"}
+    print(get_synonym(words, "Goodbye"))  # Bye
+    print(get_synonym(words, "List"))  # Array
+    print(get_synonym(words, "Plate"))  # Word <Plate> was not found in the dictionary!

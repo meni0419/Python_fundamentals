@@ -52,9 +52,9 @@ def process_sales_data(filename: str) -> dict[str, dict[str, int]]:
             sales_dictionary[customer][item] = cnt
     return sales_dictionary
 
-
-sales_dict = process_sales_data('sales.json')
-pprint(sales_dict)
+if __name__ == "__main__":
+    sales_dict = process_sales_data('sales.json')
+    pprint(sales_dict)
 
 # {'Alice': {'apple': 5, 'banana': 2, 'orange': 3},
 #  'Bob': {'apple': 2, 'banana': 7},

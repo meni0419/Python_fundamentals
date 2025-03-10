@@ -31,6 +31,6 @@ def which_country(city: str) -> str:
     return "Not found"
 
 
-print(which_country("Novgorod"))   # Russia
-print(which_country("Kiev"))      # Ukraine
-print(which_country("Mumbai"))     # Not found
+print(which_country("Novgorod"))  # Russia
+print(which_country("Kiev"))  # Ukraine
+print(which_country("Mumbai"))  # Not found
