@@ -44,7 +44,8 @@ def process_sales_data(filename: str) -> dict[str, dict[str, int]]:
     sales = read_list_from_json_file(filename)
     sales_dictionary = {}
     for customer, item, cnt in sales:
-        sales_dictionary[customer] = {}
+        if customer not in sales_dictionary:
+            sales_dictionary[customer] = {}
         if item in sales_dictionary:
             sales_dictionary[customer][item] += cnt
         else:
@@ -52,9 +53,6 @@ def process_sales_data(filename: str) -> dict[str, dict[str, int]]:
     return sales_dictionary
 
 
-print(f"#2 обычный принт \n{process_sales_data("sales.json")}")
-
-print("#3 - не понял чем отличается...")
 sales_dict = process_sales_data('sales.json')
 pprint(sales_dict)
 
