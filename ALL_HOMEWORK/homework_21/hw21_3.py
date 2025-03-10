@@ -11,11 +11,11 @@ my_dict = {'apple': 5, 'banana': 6, 'cherry': 7}
 """
 
 
-def get_value_from_dict(dictionary: dict, key: str, use_get: str) -> dict:
+def get_value_from_dict(dictionary: dict, key: str, use_get: str) -> int:
     if use_get == 'y':
         return dictionary.get(key)
     else:
-        return dictionary.setdefault(key)
+        return dictionary.setdefault(key, 1)
 
 my_dict = {'apple': 5, 'banana': 6, 'cherry': 7}
 key_ = input("Введите ключ для поиска: ")
