@@ -8,4 +8,6 @@ class Car:
         self.color = color
 
 car = Car('Golf', 2020, 'Red')
-print(car.model, car.year, car.color)
+
+if __name__ == '__main__':
+    print(car.model, car.year, car.color)

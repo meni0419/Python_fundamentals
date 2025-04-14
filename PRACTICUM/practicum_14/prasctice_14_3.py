@@ -7,15 +7,17 @@
 """
 from typing import Iterator, List
 
-from prasctice_14_1 import Car
-from prasctice_14_2 import cars
+# from prasctice_14_1 import Car
+from prasctice_14_2 import Car, cars
 
 
 def get_cars_by_color(vehicles: List[Car], color: str) -> Iterator[Car]:
-    pass
+    return filter(lambda car: car.color == color, vehicles)
 
+filtered_cars = get_cars_by_color(cars, "Red")
+for car in filtered_cars:
+    print(car.brand, car.year, car.color)
 
-# Car(brand=Golf, year=2020, color=Red)
 # Car(brand=Golf, year=2020, color=Red)
 # Car(brand=Skoda, year=2022, color=Red)
 # Car(brand=Sharan, year=2016, color=Red)

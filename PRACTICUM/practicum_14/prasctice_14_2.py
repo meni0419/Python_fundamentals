@@ -26,5 +26,6 @@ class Car:
 
 
 cars = [Car(brand, year, color) for brand, year, color in data]
-for car in cars:
-    print(car.brand, car.year, car.color)
+if __name__ == '__main__':
+    for car in cars:
+        print(car.brand, car.year, car.color)
