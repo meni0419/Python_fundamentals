@@ -28,7 +28,8 @@ import argparse
 def list_directory(path):
     for root, dirs, files in os.walk(path):
         dirs.sort()  # Sort directories alphabetically in ascending order
-        level = root.replace(path, '').count(os.sep) # counts the number of directory separators, thus giving depth level)
+        level = root.replace(path, '').count(
+            os.sep)  # counts the number of directory separators, thus giving depth level)
         indent = '    ' * level
         print(f"{indent}[DIR]      {os.path.basename(root)}/")
         sub_indent = '    ' * (level + 1)
@@ -41,7 +42,7 @@ def list_directory(path):
 parser = argparse.ArgumentParser(description="List directory contents.")
 parser.add_argument("path", nargs="?", default="./",
                     help="Path to the directory to list.\nExample usage:\npython w1.py ./"
-)
+                    )
 args = parser.parse_args()
 
 list_directory(args.path)
