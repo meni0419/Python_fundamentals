@@ -37,13 +37,16 @@ class Employee:
         self.name = name
         self.age = age
 
+
+"""
+# Alternative solution with map and filter
+
 def get_employee_list(person_list: list) -> list:
     return list(map(lambda person: Employee(person.name, person.get_age()),
                     filter(lambda person: person.get_age() > 18, person_list)))
 
-"""
-# Alternative solution: как и во втором задании можно было создать список без фильтров и мапы))
-employees = [Employee(person.name, person.get_age()) for person in list_of_persons if person.get_age() > 18]
+
+employees = get_employee_list(list_of_persons)
 """
 
 list_of_persons = [
@@ -59,7 +62,7 @@ list_of_persons = [
     Person("Jenny", "1993-05-06"),
 ]
 
-employees = get_employee_list(list_of_persons)
+employees = [Employee(person.name, person.get_age()) for person in list_of_persons if person.get_age() > 18]
 
 # Print the list of Employee objects
 print("\033[1m\033[32m"
