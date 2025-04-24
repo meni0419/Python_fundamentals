@@ -36,7 +36,7 @@ def validate_args2(type1, type2):
                 return func(*args, **kwargs)
             except TypeError as e:
                 print(f"TypeError: {e}")
-                return None  # Return None instead of executing the function when type error occurs
+                return None
 
         return wrapper
 
