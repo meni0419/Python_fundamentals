@@ -28,12 +28,15 @@ def validate_args(*expected_types):
 def validate_args2(type1, type2):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            if not isinstance(args[0], type1) or not isinstance(args[1], type2):
+            try:
                 if not isinstance(args[0], type1):
                     raise TypeError(f"Аргумент {args[0]} имеет неправильный тип {type(args[0])}. Ожидается {type1}")
                 if not isinstance(args[1], type2):
                     raise TypeError(f"Аргумент {args[1]} имеет неправильный тип {type(args[1])}. Ожидается {type2}")
-            return func(*args, **kwargs)
+                return func(*args, **kwargs)
+            except TypeError as e:
+                print(f"TypeError: {e}")
+                return None  # Return None instead of executing the function when type error occurs
 
         return wrapper
 

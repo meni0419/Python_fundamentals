@@ -41,7 +41,6 @@ def with_milk(func):
 
 
 def with_milk2(func):
-    @wraps(func)
     def wrapper(*args):
         name, price = args
 
@@ -58,7 +57,7 @@ def coffee_wm(name, price):
 
 
 print(coffee_wm("latte2", 33))
-print(coffee_wm("espresso", 20))
+print(coffee_wm("espresso2", 20))
 
 
 def with_sugar_and_milk(func):
