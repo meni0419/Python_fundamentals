@@ -71,7 +71,7 @@ def prepare_query(tables):
         return f"SELECT * FROM {table}"
 
 
-print("\nAvailable tables: Users, Products, Sales")
+print("\nAvailable tables: Users, Sales, Products")
 input_tables = input("Enter tables (comma-separated): ")
 
 prepared_query = prepare_query(input_tables)
