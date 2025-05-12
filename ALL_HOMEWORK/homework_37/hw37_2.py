@@ -1,23 +1,14 @@
-"""В базе данных ich_edit три таблицы:
-    Users с полями (id, name, age),
-    Products с полями (pid, prod, quantity) и
-    Sales с полями (sid, id, pid).
-
-Программа должна
- - вывести все имена из таблицы Users,
- - дать пользователю выбрать одно из них
- - и вывести все покупки этого пользователя.
-
- Если покупок по запрашиваемому пользователю не найдено, то выводим:
-    "User {user_name} has no purchases"
 """
+В базе данных ich_edit три таблицы. Users с полями (id, name, age), Products с полями (pid, prod, quantity) и Sales с полями (sid, id, pid).
 
+Программа должна вывести все имена из таблицы users, дать пользователю выбрать одно из них и вывести все покупки этого пользователя.
+"""
 
 import mysql.connector
 from dotenv import load_dotenv
 import os
 
-load_dotenv('../.env')
+load_dotenv('../../.env')
 
 dbconfig = {
     'host': os.getenv('ICH_EDIT_HOST'),
@@ -43,15 +34,3 @@ with mysql.connector.connect(**dbconfig) as connection:
         result = cursor.fetchall()
 
         print(result)
-
-
-
-#  ===== Table 'Users': =====
-# (1, 'John Doe', 30)
-# Please enter the username: John Doe
-#  ===== Purchases of User <John Doe> : =====
-# ('John Doe', 'Laptop', 20)
-
-
-
-
