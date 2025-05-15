@@ -48,7 +48,6 @@ while True:
     else:
         print("Invalid input. Please enter 'film', 'actor' or 'exit'.")
 
-
 try:
     with mysql.connector.connect(**dbconfig) as connection:
         with connection.cursor() as cursor:
@@ -64,11 +63,11 @@ try:
                     (f"%{keyword_genre}%",))
             elif search_req == 'year':
                 cursor.execute(
-                    "SELECT title, description, category.name FROM film, film_category, category WHERE ",
-                    (f"%{keyword_genre}%",f"%{keyword_year}%"))
-            elif search_req == 'genre and year':
+                    f"SELECT title, description, release_year FROM film WHERE release_year {keyword_year}"
+                )
+            elif search_req == 'year and genres':
                 cursor.execute(
-                    "SELECT title, description, category.name FROM film, film_category, category WHERE ",
+                    "SELECT title, description, category.name, release_year FROM film, film_category, category WHERE release_year {keyword_year} AND {keyword_genre}",
                     (f"%{keyword_year}%,{keyword_year}"))
 
             results = cursor.fetchall()
@@ -83,7 +82,8 @@ try:
                 while start < total_pages:
                     end = min(start + page_size, total_pages)
                     for row in results[start:end]:
-                        print(f"\033[1;32mTitle:\033[0m {row[0]}\n\033[1;32mDescription:\033[0m {row[1]}\n \033[1;32m{search_req} :\033[0m {row[2]}")
+                        print(
+                            f"\033[1;32mTitle:\033[0m {row[0]}\n\033[1;32mDescription:\033[0m {row[1]}\n \033[1;32m{search_req} :\033[0m {row[2]}")
 
                     start = end
                     if start < total_pages:
