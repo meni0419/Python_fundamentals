@@ -65,11 +65,11 @@ try:
             elif search_req == 'year':
                 cursor.execute(
                     "SELECT title, description, category.name FROM film, film_category, category WHERE ",
-                    (f"%{keyword_actor.upper()}%",))
+                    (f"%{keyword_genre}%",f"%{keyword_year}%"))
             elif search_req == 'genre and year':
                 cursor.execute(
                     "SELECT title, description, category.name FROM film, film_category, category WHERE ",
-                    (f"%{keyword_actor.upper()}%",))
+                    (f"%{keyword_year}%,{keyword_year}"))
 
             results = cursor.fetchall()
 

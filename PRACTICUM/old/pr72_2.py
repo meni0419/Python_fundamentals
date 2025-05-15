@@ -17,7 +17,7 @@ import mysql.connector
 from dotenv import load_dotenv
 import os
 
-load_dotenv('../.env')
+load_dotenv('../../.env')
 
 dbconfig = {
     'host': os.getenv('ICH_EDIT_HOST'),

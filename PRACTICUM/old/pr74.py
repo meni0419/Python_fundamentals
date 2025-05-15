@@ -4,7 +4,7 @@ from PyInstaller.compat import getenv
 from dotenv import load_dotenv
 import os
 import requests
-load_dotenv('../.env')
+load_dotenv('../../.env')
 
 city = input("Enter city name: ")
 
